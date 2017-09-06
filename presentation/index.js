@@ -13,8 +13,11 @@ import {
   Notes,
   Quote,
   Slide,
-  Text
+  Text,
+  Markdown
 } from "spectacle";
+
+import CodeSlide from 'spectacle-code-slide';
 
 // Import image preloader util
 import preloader from "spectacle/lib/utils/preloader";
@@ -49,6 +52,7 @@ const theme = createTheme({
 
 export default class Presentation extends React.Component {
   render() {
+
     return (
       <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme} progress="bar">
 
@@ -63,15 +67,40 @@ export default class Presentation extends React.Component {
 
         <Slide transition={["fade"]} bgColor="tertiary" notes="Here explain...">
           <Heading size={6} textColor="primary" caps>What is React?</Heading>
-          <List>
-            <ListItem>A jasvasript library for building user interfaces</ListItem>
+          <List >
+            <ListItem>A JavaScript library for building user interfaces</ListItem>
             <ListItem>View in the MVC</ListItem>
             <ListItem>Show an example of stateless react component</ListItem>
             <ListItem>Component-Based --> compose them to make complex UIs</ListItem>
             <ListItem>Learn Once, Write anywhere (Server rendering, React Native)</ListItem>
           </List>
           <Text size={6} textColor="secondary">Standard text</Text>
+        </Slide>
 
+        <CodeSlide
+          transition={["fade"]}
+          lang="js"
+          code={require("raw-loader!../assets/code.test")}
+          ranges={[
+            { loc: [0, 27], title: "Walking through some code" },
+            { loc: [0, 1] },
+            { loc: [1, 2] },
+            { loc: [1, 2] },
+            { loc: [2, 3] },
+            { loc: [4, 7] },
+            { loc: [8, 10] },
+            // ...
+          ]} />
+
+        <Slide transition={["fade"]} bgColor="tertiary" notes="Here explain...">
+          <Heading size={6} textColor="primary" caps>Why React?</Heading>
+          <List>
+            <ListItem>Scale, components, update DOM automatically based on the state</ListItem>
+            <ListItem>Give an example with JQuery and the same with React</ListItem>
+            <ListItem>Component-Based --> compose them to make complex UIs</ListItem>
+            <ListItem>Learn Once, Write anywhere (Server rendering, React Native)</ListItem>
+          </List>
+          <Text size={6} textColor="secondary">Standard text</Text>
         </Slide>
         <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>Example</Heading>
