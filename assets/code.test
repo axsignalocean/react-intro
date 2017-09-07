@@ -1,4 +1,29 @@
-ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root')
-);
+---- HTML
+
+<div id="root">
+  <!-- This element's contents will be replaced with your component. -->
+</div>
+
+---- JS (Babel ES6)
+
+  const Profile = ({ 
+    firstname, 
+    lastname, 
+    children 
+  }) => (
+    <div>
+      <div>
+        Hello {firstname} {lastname.toUpperCase()}
+      </div>
+      {children}
+    </div>
+  )
+
+  ReactDOM.render(
+    <Profile firstname={'John'} lastname='Dow'>
+      <div className='email'>
+        Email: john.dow@mail.com
+      </div>
+    </Profile>,
+    document.getElementById('root')
+  )

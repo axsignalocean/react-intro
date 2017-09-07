@@ -62,39 +62,59 @@ export default class Presentation extends React.Component {
           <Heading size={3} lineHeight={1} textColor="secondary" >
             Introduction to React
           </Heading>
-          <Text margin="10px 0 0" textColor="primary" size={1} fit bold>
-          </Text>
         </Slide>
 
-        <Slide transition={["fade"]} bgColor="tertiary" notes="Here explain...">
-          <Heading size={6} textColor="primary" caps>What is React?</Heading>
+        <Slide transition={["fade"]} bgColor="primary"
+          notes={
+            <div>
+              <ol>
+                <li>User interface --> generic, not necessarely web based, see Native Mobile Apps</li>
+                <li>Component-Based --> compose them to make complex UIs</li>
+                <li>Learn Once, Write anywhere -> Server rendering (SEO), React Native</li>
+              </ol>
+            </div>
+          }
+        >
+          <Heading size={6} textColor="tertiary" caps>What is React?</Heading>
           <List >
-            <ListItem>A JavaScript library for building user interfaces</ListItem>
-            <ListItem>View in the MVC</ListItem>
-            <ListItem>Show an example of stateless react component</ListItem>
-            <ListItem>Component-Based --> compose them to make complex UIs</ListItem>
-            <ListItem>Learn Once, Write anywhere (Server rendering, React Native)</ListItem>
+            <Appear><ListItem>A JavaScript library for building user interfaces</ListItem></Appear>
+            <Appear><ListItem><span style={{ fontWeight: "bold" }}>V</span>iew in the M<span style={{ fontWeight: "bold" }}>V</span>C</ListItem></Appear>
+            <Appear><ListItem>Component-Based</ListItem></Appear>
+            <Appear><ListItem>Learn Once, Write anywhere</ListItem></Appear>
           </List>
-          <Text size={6} textColor="secondary">Standard text</Text>
         </Slide>
 
         <CodeSlide
+          notes={
+            <div>
+              <h4>Present integration of React in an existing HTML page.</h4>
+              <ol>
+                <li>Easy to integrate</li>
+                <li>Show an example of stateless react component</li>
+              </ol>
+            </div>
+          }
           transition={["fade"]}
           lang="js"
           code={require("raw-loader!../assets/code.test")}
           ranges={[
-            { loc: [0, 27], title: "Walking through some code" },
-            { loc: [0, 1] },
-            { loc: [1, 2] },
-            { loc: [1, 2] },
-            { loc: [2, 3] },
-            { loc: [4, 7] },
-            { loc: [8, 10] },
-            // ...
+            { loc: [0, 1], title: "How to integrate?" },
+            { loc: [0, 6] },
+            { loc: [21, 30] },
+            { loc: [6, 20] },
+            { loc: [21, 30] },
           ]} />
 
-        <Slide transition={["fade"]} bgColor="tertiary" notes="Here explain...">
-          <Heading size={6} textColor="primary" caps>Why React?</Heading>
+        <Slide transition={["fade"]} bgColor="primary" notes={
+          <div>
+            <h4>Slide notes</h4>
+            <ol>
+              <li>First note</li>
+              <li>Second note</li>
+            </ol>
+          </div>
+        } >
+          <Heading size={6} textColor="tertiary" caps>Why React?</Heading>
           <List>
             <Appear><ListItem>Scale, components, update DOM automatically based on the state</ListItem></Appear>
             <Appear><ListItem>Give an example with JQuery and the same with React</ListItem></Appear>
@@ -104,7 +124,7 @@ export default class Presentation extends React.Component {
           </List>
           <Text size={6} textColor="secondary">Standard text</Text>
         </Slide>
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
+        <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
           <Heading size={6} textColor="secondary" caps>Example</Heading>
           <List>
             <ListItem>Simple component</ListItem>
