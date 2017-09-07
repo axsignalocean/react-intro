@@ -3,6 +3,7 @@ import React from "react";
 
 // Import Spectacle Core tags
 import {
+  Appear,
   BlockQuote,
   Cite,
   Deck,
@@ -95,10 +96,11 @@ export default class Presentation extends React.Component {
         <Slide transition={["fade"]} bgColor="tertiary" notes="Here explain...">
           <Heading size={6} textColor="primary" caps>Why React?</Heading>
           <List>
-            <ListItem>Scale, components, update DOM automatically based on the state</ListItem>
-            <ListItem>Give an example with JQuery and the same with React</ListItem>
-            <ListItem>Component-Based --> compose them to make complex UIs</ListItem>
-            <ListItem>Learn Once, Write anywhere (Server rendering, React Native)</ListItem>
+            <Appear><ListItem>Scale, components, update DOM automatically based on the state</ListItem></Appear>
+            <Appear><ListItem>Give an example with JQuery and the same with React</ListItem></Appear>
+            <Appear><ListItem>Component-Based --> compose them to make complex UIs</ListItem></Appear>
+            <Appear><ListItem>Can add React to an </ListItem></Appear>
+            <Appear><ListItem>Learn Once, Write anywhere (Server rendering, React Native)</ListItem></Appear>
           </List>
           <Text size={6} textColor="secondary">Standard text</Text>
         </Slide>
