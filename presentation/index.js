@@ -122,7 +122,7 @@ export default class Presentation extends React.Component {
               <ol>
                 <li>User interface --> generic, not necessarely web based, see Native Mobile Apps</li>
                 <li>Component-Based --> compose them to make complex UIs</li>
-                <li>Learn Once, Write anywhere -> Server rendering (SEO), React Native</li>
+                <li>Learn Once, Write anywhere -> Server rendering (SEO), React Native, Render to canvas instead of HTML</li>
                 <li>Events behave in a consistent, standards-compliant way in all browsers (including IE8) and automatically use event delegation.</li>
               </ol>
             </div>
@@ -172,6 +172,7 @@ export default class Presentation extends React.Component {
             <Appear><ListItem>Keeps the DOM in sync with your data</ListItem></Appear>
             <Appear><ListItem>Component-Based</ListItem></Appear>
             <Appear><ListItem>Learn Once, Write anywhere</ListItem></Appear>
+            <Appear><ListItem>Events behave in a consistent, standards-compliant way in all browsers</ListItem></Appear>
           </List>
         </Slide>
 
@@ -244,6 +245,7 @@ export default class Presentation extends React.Component {
               <ol>
                 <li>Mention stateless component => pure JS function</li>
                 <li>Mention statefull => here extends ES6 class</li>
+                <li>key to match children in the original tree with children in the subsequent tree.</li>
               </ol>
             </div>
           }
@@ -259,17 +261,16 @@ export default class Presentation extends React.Component {
             { loc: [6, 20] },
             { loc: [21, 30] },
           ]} />
-        <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
-          <Heading size={6} textColor="secondary" caps>Example</Heading>
-          <List>
-            <ListItem>Simple component</ListItem>
-            <ListItem>Statefull component</ListItem>
-          </List>
-        </Slide>
+
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <BlockQuote>
-            <Quote>Example Quote</Quote>
-            <Cite>Author</Cite>
+            <Quote textSize={35}>
+              The license granted hereunder will terminate, automatically and without notice,
+              for anyone that makes any claim (including by filing any lawsuit, assertion or other action) alleging (a) direct, indirect,
+               or contributory infringement or inducement to infringe any patent [...] or (b) that any right in any patent claim
+               of Facebook is invalid or unenforceable."
+              </Quote>
+            <Cite>Facebook</Cite>
           </BlockQuote>
         </Slide>
       </Deck>
