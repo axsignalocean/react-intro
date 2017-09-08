@@ -1,0 +1,24 @@
+$(document).ready(function () {
+  var jqueryDiv = $(this).closest("#jquery")
+  var counterStr = "Counter: "
+
+  $("body").on("click", "#jquery li", function () {
+    var counter = jqueryDiv
+                    .children("#counter")
+                    .first()
+    $(this).css({ "color": "" })
+      .siblings()
+      .css({ "color": "" })
+    var count = counter
+      .text()
+      .substring(counterStr.length);
+    counter
+      .html(counterStr + (Number.parseInt(count) + 1))
+  })
+
+  $("body").on("click", "#counter", function () {
+    $(this).html(counterStr + 0)
+    var liWithoutFirst = jqueryDiv.find("li").slice(1)
+    $(liWithoutFirst).css({ "color": "green" })
+  })
+})

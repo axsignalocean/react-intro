@@ -1,0 +1,56 @@
+const Li = ({ color = "", onClick, children }) => (
+  <li className="clickable" style={{ color }} onClick={onClick}>
+    {children}
+  </li>
+)
+
+const Counter = ({ value, onClick }) => (
+  <span className="clickable" onClick={onClick}>
+    Count: {value}
+  </span>
+)
+
+const INITIAL_COLORS = ['black', 'black', 'black']
+
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      counter: 0,
+      colors: INITIAL_COLORS
+    }
+  }
+
+  handleLiClick = (e) => {
+    this.setState((prevState, props) => ({
+      counter: prevState.counter + 1,
+      colors: INITIAL_COLORS
+    }))
+
+  }
+
+  handleCounterClick = (e) => {
+    this.setState({
+      counter: 0,
+      colors: ['black', 'green', 'green']
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        {/* Always one root element */}
+        <ul style={{ textAlign: "left", listStylePosition: "inside", padding: 0 }}>
+          {
+            this.state.colors.map(
+              (color, index) => (
+                <Li key={index} color={color} onClick={this.handleLiClick}>Item - {index + 1} </Li>
+              )
+            )
+          }
+        </ul>
+        <Counter value={this.state.counter} onClick={this.handleCounterClick} />
+      </div>
+    )
+  }
+}

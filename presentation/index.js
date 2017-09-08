@@ -51,9 +51,61 @@ const theme = createTheme({
     secondary: "Helvetica"
   });
 
+const Li = ({ color = "", onClick, children }) => (
+  <li className="clickable" style={{ color }} onClick={onClick} >{children}</li>
+)
+
+const Counter = ({ value, onClick }) => (
+  <span className="clickable" onClick={onClick}>Count: {value}</span>
+)
+
+const INITIAL_COLORS = ['black', 'black', 'black']
+
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      counter: 0,
+      colors: INITIAL_COLORS
+    }
+  }
+
+  handleLiClick = (e) => {
+    this.setState((prevState, props) => ({
+      counter: prevState.counter + 1,
+      colors: INITIAL_COLORS
+    }))
+
+  }
+
+  handleCounterClick = (e) => {
+    this.setState({
+      counter: 0,
+      colors: ['black', 'green', 'green']
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        {/* Always one root element */}
+        <ul style={{ textAlign: "left", listStylePosition: "inside", padding: 0 }}>
+          {
+            this.state.colors.map(
+              (color, index) => (
+                <Li key={index} color={color} onClick={this.handleLiClick}>Item - {index + 1} </Li>
+              )
+            )
+          }
+        </ul>
+        <Counter value={this.state.counter} onClick={this.handleCounterClick} />
+      </div>
+    )
+  }
+}
+
 export default class Presentation extends React.Component {
   render() {
-
     return (
       <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme} progress="bar">
 
@@ -71,6 +123,7 @@ export default class Presentation extends React.Component {
                 <li>User interface --> generic, not necessarely web based, see Native Mobile Apps</li>
                 <li>Component-Based --> compose them to make complex UIs</li>
                 <li>Learn Once, Write anywhere -> Server rendering (SEO), React Native</li>
+                <li>Events behave in a consistent, standards-compliant way in all browsers (including IE8) and automatically use event delegation.</li>
               </ol>
             </div>
           }
@@ -79,8 +132,6 @@ export default class Presentation extends React.Component {
           <List >
             <Appear><ListItem>A JavaScript library for building user interfaces</ListItem></Appear>
             <Appear><ListItem><span style={{ fontWeight: "bold" }}>V</span>iew in the M<span style={{ fontWeight: "bold" }}>V</span>C</ListItem></Appear>
-            <Appear><ListItem>Component-Based</ListItem></Appear>
-            <Appear><ListItem>Learn Once, Write anywhere</ListItem></Appear>
           </List>
         </Slide>
 
@@ -91,6 +142,7 @@ export default class Presentation extends React.Component {
               <ol>
                 <li>Easy to integrate</li>
                 <li>Show an example of stateless react component</li>
+                <li>ReactDOM.render => At the root of your tree you still have to write some plumbing code to connect the outer world into React.</li>
               </ol>
             </div>
           }
@@ -109,21 +161,104 @@ export default class Presentation extends React.Component {
           <div>
             <h4>Slide notes</h4>
             <ol>
-              <li>First note</li>
-              <li>Second note</li>
+              <li>Virtual DOM compare in memory the DOM</li>
+              <li>Components let you split the UI into independent, reusable pieces, and think about each piece in isolation -> compose them to make complex UIs. Easy to add to an existing project</li>
+              <li>Server rendering, React Native</li>
             </ol>
           </div>
         } >
           <Heading size={6} textColor="tertiary" caps>Why React?</Heading>
           <List>
-            <Appear><ListItem>Scale, components, update DOM automatically based on the state</ListItem></Appear>
-            <Appear><ListItem>Give an example with JQuery and the same with React</ListItem></Appear>
-            <Appear><ListItem>Component-Based --> compose them to make complex UIs</ListItem></Appear>
-            <Appear><ListItem>Can add React to an </ListItem></Appear>
-            <Appear><ListItem>Learn Once, Write anywhere (Server rendering, React Native)</ListItem></Appear>
+            <Appear><ListItem>Keeps the DOM in sync with your data</ListItem></Appear>
+            <Appear><ListItem>Component-Based</ListItem></Appear>
+            <Appear><ListItem>Learn Once, Write anywhere</ListItem></Appear>
           </List>
-          <Text size={6} textColor="secondary">Standard text</Text>
         </Slide>
+
+        <Slide transition={["fade"]} bgColor="primary" >
+          <Heading size={6} lineHeight={1} textColor="tertiary" >
+            JQuery
+          </Heading>
+          <div id="jquery">
+
+            <List >
+              <ListItem className="clickable">Item - 1</ListItem>
+              <ListItem className="clickable">Item - 2</ListItem>
+              <ListItem className="clickable">Item - 3</ListItem>
+            </List>
+            <span id="counter" className="clickable">Counter: 0</span>
+          </div>
+        </Slide>
+
+        <CodeSlide
+          notes={
+            <div>
+              <h4>Html Demo</h4>
+            </div>
+          }
+          maxWidth={1200}
+          maxHeight={1300}
+          transition={["fade"]}
+          lang="html"
+          code={require("raw-loader!../assets/html.example")}
+          ranges={[
+            { loc: [0, 10], title: "Html" },
+            { loc: [0, 6] },
+            { loc: [21, 30] },
+            { loc: [6, 20] },
+            { loc: [21, 30] },
+          ]} />
+
+        <CodeSlide
+          notes={
+            <div>
+              <h4>Jquery code.</h4>
+            </div>
+          }
+          maxWidth={1200}
+          transition={["fade"]}
+          lang="js"
+          className="bigger"
+          code={require("raw-loader!../assets/jquery")}
+          ranges={[
+            { loc: [0, 1], title: "JQuery" },
+            { loc: [0, 6] },
+            { loc: [21, 30] },
+            { loc: [6, 20] },
+            { loc: [21, 30] },
+          ]} />
+
+        <Slide transition={["fade"]} bgColor="primary" >
+          <Heading size={6} lineHeight={1} textColor="tertiary" >
+            React
+          </Heading>
+          <div id="react">
+            <App />
+          </div>
+        </Slide>
+
+        <CodeSlide
+          notes={
+            <div>
+              <h4>React code.</h4>
+              <ol>
+                <li>Mention stateless component => pure JS function</li>
+                <li>Mention statefull => here extends ES6 class</li>
+              </ol>
+            </div>
+          }
+          maxWidth={1200}
+          transition={["fade"]}
+          lang="js"
+          className="bigger"
+          code={require("raw-loader!../assets/react")}
+          ranges={[
+            { loc: [0, 1], title: "React" },
+            { loc: [0, 6] },
+            { loc: [21, 30] },
+            { loc: [6, 20] },
+            { loc: [21, 30] },
+          ]} />
         <Slide transition={["fade"]} bgColor="primary" textColor="secondary">
           <Heading size={6} textColor="secondary" caps>Example</Heading>
           <List>
