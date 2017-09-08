@@ -39,18 +39,29 @@
 
   <script type="text/javascript">
     $(document).ready(function () {
+
+      var counterText = "Count clicks: "
+
       $("body").on("click", "#jquery li", function () {
+        if ($(this).data("done")) {
+          $(this).data("done", false)
+          $(this).css({ "text-decoration": "" })
+        } else {
+          $(this).data("done", true)
+          $(this).css({ "text-decoration": "line-through" })
+        }
+
         var counter = $(this).closest("#jquery").children("#counter").first()
-        $(this).css({ "color": "" }).siblings().css({ "color": "" })
-        var count = counter.text().substring("Counter: ".length);
-        counter.html("Counter: " + (Number.parseInt(count) + 1))
+        var count = counter.text().substring(counterText.length);
+        counter.html(counterText + (Number.parseInt(count) + 1))
       })
 
-      $("body").on("click", "#counter", function () {
-        $(this).html("Counter: " + 0)
-        var liWithoutFirst = $(this).closest("#jquery").find("li").slice(1)
-        $(liWithoutFirst).css({ "color": "green" })
+      $("body").on("click", ".reset", function () {
+        var counter = $(this).closest("#jquery").children("#counter").first()
+        counter.html(counterText + 0)
+        $(this).closest("#jquery").find("li").css({ "text-decoration": "" }).siblings().css({ "text-decoration": "" })
       })
+
     })
   </script>
 </body>

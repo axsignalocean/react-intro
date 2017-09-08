@@ -51,38 +51,34 @@ const theme = createTheme({
     secondary: "Helvetica"
   });
 
-const Li = ({ color = "", onClick, children }) => (
-  <li className="clickable" style={{ color }} onClick={onClick} >{children}</li>
+const Li = ({ isDone = false, onClick, children }) => (
+  <li className="clickable" style={{ textDecoration: isDone ? "line-through" : "" }} onClick={onClick} >{children}</li>
 )
 
 const Counter = ({ value, onClick }) => (
-  <span className="clickable" onClick={onClick}>Count: {value}</span>
+  <span className="clickable" onClick={onClick}>Count clicks: {value}</span>
 )
 
-const INITIAL_COLORS = ['black', 'black', 'black']
+const INITIAL_STATE = {
+  counter: 0,
+  isDoneItems: [false, false, false]
+}
 
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      counter: 0,
-      colors: INITIAL_COLORS
-    }
+    this.state = INITIAL_STATE
   }
 
-  handleLiClick = (e) => {
+  handleLiClick = (index, e) => {
     this.setState((prevState, props) => ({
       counter: prevState.counter + 1,
-      colors: INITIAL_COLORS
+      isDoneItems: prevState.isDoneItems.map((isDone, i) => index === i ? !isDone : isDone)
     }))
-
   }
 
   handleCounterClick = (e) => {
-    this.setState({
-      counter: 0,
-      colors: ['black', 'green', 'green']
-    })
+    this.setState(INITIAL_STATE)
   }
 
   render() {
@@ -91,14 +87,23 @@ class App extends React.Component {
         {/* Always one root element */}
         <ul style={{ textAlign: "left", listStylePosition: "inside", padding: 0 }}>
           {
-            this.state.colors.map(
-              (color, index) => (
-                <Li key={index} color={color} onClick={this.handleLiClick}>Item - {index + 1} </Li>
+            this.state.isDoneItems.map(
+              (isDone, index) => (
+                <Li
+                  key={index}
+                  isDone={isDone}
+                  onClick={this.handleLiClick.bind(this, index)}
+                >
+                  Item - {index + 1}
+                </Li>
               )
             )
           }
         </ul>
-        <Counter value={this.state.counter} onClick={this.handleCounterClick} />
+        <Counter value={this.state.counter} />
+        <div>
+          <button onClick={this.handleCounterClick}>Reset</button>
+        </div>
       </div>
     )
   }
@@ -109,7 +114,15 @@ export default class Presentation extends React.Component {
     return (
       <Deck transition={["zoom", "slide"]} transitionDuration={500} theme={theme} progress="bar">
 
-        <Slide transition={["zoom"]} bgColor="primary">
+        <Slide transition={["zoom"]} bgColor="primary"
+          notes={
+            <div>
+              <ol>
+                <li>Who is familiar with React? ES6?</li>
+              </ol>
+            </div>
+          }
+        >
           <Image src={images.react} width={300} />
           <Heading size={3} lineHeight={1} textColor="secondary" >
             Introduction to React
@@ -187,7 +200,10 @@ export default class Presentation extends React.Component {
               <ListItem className="clickable">Item - 2</ListItem>
               <ListItem className="clickable">Item - 3</ListItem>
             </List>
-            <span id="counter" className="clickable">Counter: 0</span>
+            <span id="counter" className="clickable">Count clicks: 0</span>
+            <div>
+              <button className="reset">Reset</button>
+            </div>
           </div>
         </Slide>
 
