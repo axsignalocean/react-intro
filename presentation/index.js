@@ -208,14 +208,14 @@ export default class Presentation extends React.Component {
           <Heading size={6} lineHeight={1} textColor="tertiary" >
             JQuery
           </Heading>
-          <div id="jquery">
+          <div className="container">
 
             <List >
               <ListItem className="clickable">Item - 1</ListItem>
               <ListItem className="clickable">Item - 2</ListItem>
               <ListItem className="clickable">Item - 3</ListItem>
             </List>
-            <span id="counter" className="clickable">Count clicks: 0</span>
+            <span className="counter">Count clicks: 0</span>
             <div>
               <button className="reset">Reset</button>
             </div>
@@ -233,7 +233,7 @@ export default class Presentation extends React.Component {
           maxHeight={1300}
           transition={["fade"]}
           lang="html"
-          code={require("raw-loader!../assets/html.example")}
+          code={require("raw-loader!../assets/html")}
           ranges={[
             { loc: [0, 15], title: "Html" },
             { loc: [0, 15] },
@@ -248,15 +248,15 @@ export default class Presentation extends React.Component {
           maxWidth={1200}
           transition={["fade"]}
           lang="js"
-          className="bigger"
           showLineNumbers={false}
           code={require("raw-loader!../assets/jquery")}
           ranges={[
             { loc: [0, 1], title: "Naive JQuery" },
-            { loc: [0, 6] },
-            { loc: [21, 30] },
-            { loc: [6, 20] },
-            { loc: [21, 30] },
+            { loc: [1, 3] }, // counterText
+            { loc: [3, 15] }, // click li
+            { loc: [15, 23] },// click reset
+            { loc: [26, 32] }, // find counter
+            { loc: [33, 45] }, // switchTextDecoration
           ]} />
 
         <CodeSlide
@@ -270,7 +270,7 @@ export default class Presentation extends React.Component {
           transition={["fade"]}
           lang="html"
           showLineNumbers={false}
-          code={require("raw-loader!../assets/html.example")}
+          code={require("raw-loader!../assets/html")}
           ranges={[
             { loc: [0, 15], title: "Component hierarchy" },
             { loc: [0, 50], note: "=> App component" },
@@ -335,6 +335,9 @@ export default class Presentation extends React.Component {
 
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
           <Heading size={6} textColor="tertiary" caps>Demo</Heading>
+          <Heading size={10} lineHeight={1} textColor="primary" >
+            by Andreas Dimakis
+          </Heading>
         </Slide>
       </Deck>
     );

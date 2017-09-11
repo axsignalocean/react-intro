@@ -1,10 +1,10 @@
-<div id="jquery">
+<div class="container">
   <ul>
     <li>Item - 1</li>
     <li>Item - 2</li>
     <li>Item - 3</li>
   </ul>
-  <div id="counter">
+  <div class="counter">
     Count clicks: 0
   </div>
   <div>
