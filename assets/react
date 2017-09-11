@@ -1,11 +1,16 @@
 const Li = ({ color = "", onClick, children }) => (
-  <li className="clickable" style={{ color }} onClick={onClick}>
+  <li 
+    className="clickable" 
+    style={{ color }} 
+    onClick={onClick}>
     {children}
   </li>
 )
 
 const Counter = ({ value, onClick }) => (
-  <span className="clickable" onClick={onClick}>
+  <span 
+    className="clickable" 
+    onClick={onClick}>
     Count: {value}
   </span>
 )

@@ -33,10 +33,6 @@ require("spectacle/lib/themes/default/index.css");
 
 const images = {
   react: require("../assets/react.png"),
-  city: require("../assets/city.jpg"),
-  kat: require("../assets/kat.png"),
-  logo: require("../assets/formidable-logo.svg"),
-  markdown: require("../assets/markdown.png")
 };
 
 preloader(images);
@@ -70,7 +66,7 @@ class App extends React.Component {
     this.state = INITIAL_STATE
   }
 
-  handleLiClick = (index, e) => {
+  handleLiClick = (index) => (e) => {
     this.setState((prevState, props) => ({
       counter: prevState.counter + 1,
       isDoneItems: prevState.isDoneItems.map((isDone, i) => index === i ? !isDone : isDone)
@@ -92,7 +88,7 @@ class App extends React.Component {
                 <Li
                   key={index}
                   isDone={isDone}
-                  onClick={this.handleLiClick.bind(this, index)}
+                  onClick={this.handleLiClick(index)}
                 >
                   Item - {index + 1}
                 </Li>
@@ -186,6 +182,7 @@ export default class Presentation extends React.Component {
             <Appear><ListItem>Component-Based</ListItem></Appear>
             <Appear><ListItem>Learn Once, Write anywhere</ListItem></Appear>
             <Appear><ListItem>Events behave in a consistent, standards-compliant way in all browsers</ListItem></Appear>
+            <Appear><ListItem>Deprecations =>  automatically migrate your code (reactjs/react-codemo)</ListItem></Appear>
           </List>
         </Slide>
 
@@ -213,17 +210,15 @@ export default class Presentation extends React.Component {
               <h4>Html Demo</h4>
             </div>
           }
+          className="html"
           maxWidth={1200}
           maxHeight={1300}
           transition={["fade"]}
           lang="html"
           code={require("raw-loader!../assets/html.example")}
           ranges={[
-            { loc: [0, 10], title: "Html" },
-            { loc: [0, 6] },
-            { loc: [21, 30] },
-            { loc: [6, 20] },
-            { loc: [21, 30] },
+            { loc: [0, 15], title: "Html" },
+            { loc: [0, 15] },
           ]} />
 
         <CodeSlide
@@ -236,13 +231,33 @@ export default class Presentation extends React.Component {
           transition={["fade"]}
           lang="js"
           className="bigger"
+          showLineNumbers={false}
           code={require("raw-loader!../assets/jquery")}
           ranges={[
-            { loc: [0, 1], title: "JQuery" },
+            { loc: [0, 1], title: "Naive JQuery" },
             { loc: [0, 6] },
             { loc: [21, 30] },
             { loc: [6, 20] },
             { loc: [21, 30] },
+          ]} />
+
+        <CodeSlide
+          notes={
+            <div>
+              <h4>Components</h4>
+            </div>
+          }
+          maxWidth={1000}
+          maxHeight={1300}
+          transition={["fade"]}
+          lang="html"
+          showLineNumbers={false}
+          code={require("raw-loader!../assets/html.example")}
+          ranges={[
+            { loc: [0, 15], title: "Component hierarchy" },
+            { loc: [0, 50], note: "=> App component" },
+            { loc: [2, 3], note: "=> Li component" },
+            { loc: [6, 9], note: "=> Counter component" },
           ]} />
 
         <Slide transition={["fade"]} bgColor="primary" >
@@ -268,10 +283,11 @@ export default class Presentation extends React.Component {
           maxWidth={1200}
           transition={["fade"]}
           lang="js"
+          showLineNumbers={false}
           className="bigger"
           code={require("raw-loader!../assets/react")}
           ranges={[
-            { loc: [0, 1], title: "React" },
+            { loc: [0, 1], title: "Naive React" },
             { loc: [0, 6] },
             { loc: [21, 30] },
             { loc: [6, 20] },
