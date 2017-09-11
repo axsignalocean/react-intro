@@ -1,8 +1,7 @@
 # Spectacle Boilerplate
 
-## Reference
-
-The Spectacle core API is available at [https://github.com/FormidableLabs/spectacle/blob/master/README.markdown](https://github.com/FormidableLabs/spectacle/blob/master/README.markdown).
+## Prensentation
+  You can view the presentation [here](http://react-athens.surge.sh)
 
 ## Development
 
