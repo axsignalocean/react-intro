@@ -58,7 +58,8 @@ export default class Presentation extends React.Component {
           notes={
             <div>
               <ol>
-                <li>Who is familiar with React? ES6?</li>
+                <li>Who is familiar with React?</li>
+                <li>ES6?</li>
               </ol>
             </div>
           }
@@ -74,9 +75,7 @@ export default class Presentation extends React.Component {
             <div>
               <ol>
                 <li>User interface --> generic, not necessarely web based, see Native Mobile Apps</li>
-                <li>Component-Based --> compose them to make complex UIs</li>
-                <li>Learn Once, Write anywhere -> Server rendering (SEO), React Native, Render to canvas instead of HTML</li>
-                <li>Events behave in a consistent, standards-compliant way in all browsers (including IE8) and automatically use event delegation.</li>
+                <li>Only the view in the Model View Controller. More flexibility about the architecture but more responsability.</li>
               </ol>
             </div>
           }
@@ -115,8 +114,9 @@ export default class Presentation extends React.Component {
             <h4>Slide notes</h4>
             <ol>
               <li>Virtual DOM compare in memory the DOM</li>
-              <li>Components let you split the UI into independent, reusable pieces, and think about each piece in isolation -> compose them to make complex UIs. Easy to add to an existing project</li>
-              <li>Server rendering, React Native</li>
+              <li>Component-Based --> compose them to make complex UIs. Components let you split the UI into independent, reusable pieces, and think about each piece in isolation -> compose them to make complex UIs. Easy to add to an existing project</li>
+              <li>Learn Once, Write anywhere -> Server rendering (SEO), React Native, Render to canvas instead of HTML</li>
+              <li>Events behave in a consistent, standards-compliant way in all browsers (including IE8) and automatically use event delegation.</li>
             </ol>
           </div>
         } >
