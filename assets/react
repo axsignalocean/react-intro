@@ -1,60 +1,69 @@
-const Li = ({ color = "", onClick, children }) => (
-  <li 
-    className="clickable" 
-    style={{ color }} 
-    onClick={onClick}>
+
+const Li = ({ isDone = false, onClick, children }) => (
+  <li
+    className="clickable"
+    style={{ textDecoration: isDone ? "line-through" : "" }}
+    onClick={onClick}
+  >
     {children}
   </li>
 )
 
 const Counter = ({ value, onClick }) => (
-  <span 
-    className="clickable" 
-    onClick={onClick}>
-    Count: {value}
+  <span
+    className="clickable"
+    onClick={onClick}
+  >
+    Count clicks: {value}
   </span>
 )
 
-const INITIAL_COLORS = ['black', 'black', 'black']
+const INITIAL_STATE = {
+  counter: 0,
+  isDoneItems: [false, false, false]
+}
 
 class App extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      counter: 0,
-      colors: INITIAL_COLORS
-    }
+    this.state = INITIAL_STATE
   }
 
-  handleLiClick = (e) => {
+  handleLiClick = (index) => (e) => {
     this.setState((prevState, props) => ({
       counter: prevState.counter + 1,
-      colors: INITIAL_COLORS
+      isDoneItems: prevState.isDoneItems.map((isDone, i) => index === i ? !isDone : isDone)
     }))
-
   }
 
   handleCounterClick = (e) => {
-    this.setState({
-      counter: 0,
-      colors: ['black', 'green', 'green']
-    })
+    this.setState(INITIAL_STATE)
   }
 
   render() {
+   const resetButton = (
+      <div>
+        <button onClick={this.handleCounterClick}>Reset</button>
+      </div>
+    )
+
+    const list = (
+      <ul>{
+          this.state.isDoneItems.map((isDone, index) => 
+            (<Li key={index} isDone={isDone} 
+              onClick={this.handleLiClick(index)}>
+              Item - {index + 1}
+            </Li>)
+          )
+      }</ul>
+    )
+
     return (
       <div>
         {/* Always one root element */}
-        <ul style={{ textAlign: "left", listStylePosition: "inside", padding: 0 }}>
-          {
-            this.state.colors.map(
-              (color, index) => (
-                <Li key={index} color={color} onClick={this.handleLiClick}>Item - {index + 1} </Li>
-              )
-            )
-          }
-        </ul>
-        <Counter value={this.state.counter} onClick={this.handleCounterClick} />
+        {list}
+        <Counter value={this.state.counter} />
+        {resetButton}
       </div>
     )
   }

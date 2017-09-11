@@ -48,11 +48,22 @@ const theme = createTheme({
   });
 
 const Li = ({ isDone = false, onClick, children }) => (
-  <li className="clickable" style={{ textDecoration: isDone ? "line-through" : "" }} onClick={onClick} >{children}</li>
+  <li
+    className="clickable"
+    style={{ textDecoration: isDone ? "line-through" : "" }}
+    onClick={onClick}
+  >
+    {children}
+  </li>
 )
 
 const Counter = ({ value, onClick }) => (
-  <span className="clickable" onClick={onClick}>Count clicks: {value}</span>
+  <span
+    className="clickable"
+    onClick={onClick}
+  >
+    Count clicks: {value}
+  </span>
 )
 
 const INITIAL_STATE = {
@@ -78,28 +89,35 @@ class App extends React.Component {
   }
 
   render() {
+    const resetButton = (
+      <div>
+        <button onClick={this.handleCounterClick}>Reset</button>
+      </div>
+    )
+
+    const list = (
+      <ul style={{ textAlign: "left", listStylePosition: "inside", padding: 0 }}>
+        {
+          this.state.isDoneItems.map(
+            (isDone, index) => (
+              <Li
+                key={index}
+                isDone={isDone}
+                onClick={this.handleLiClick(index)}
+              >
+                Item - {index + 1}
+              </Li>
+            )
+          )
+        }
+      </ul>
+    )
     return (
       <div>
         {/* Always one root element */}
-        <ul style={{ textAlign: "left", listStylePosition: "inside", padding: 0 }}>
-          {
-            this.state.isDoneItems.map(
-              (isDone, index) => (
-                <Li
-                  key={index}
-                  isDone={isDone}
-                  onClick={this.handleLiClick(index)}
-                >
-                  Item - {index + 1}
-                </Li>
-              )
-            )
-          }
-        </ul>
+        {list}
         <Counter value={this.state.counter} />
-        <div>
-          <button onClick={this.handleCounterClick}>Reset</button>
-        </div>
+        {resetButton}
       </div>
     )
   }
@@ -282,16 +300,25 @@ export default class Presentation extends React.Component {
           }
           maxWidth={1200}
           transition={["fade"]}
+          className="html"
           lang="js"
           showLineNumbers={false}
           className="bigger"
           code={require("raw-loader!../assets/react")}
           ranges={[
-            { loc: [0, 1], title: "Naive React" },
-            { loc: [0, 6] },
-            { loc: [21, 30] },
-            { loc: [6, 20] },
-            { loc: [21, 30] },
+            { loc: [0, 0], title: "React" },
+            { loc: [0, 10] }, // li
+            { loc: [11, 20] }, // Counter
+            { loc: [20, 25] }, // Initial state
+            { loc: [25, 26] }, // class
+            { loc: [26, 30] },// constructor
+            { loc: [30, 37] },// handleLiClick
+            { loc: [38, 41] }, // handleCounterClick
+            { loc: [41, 43] }, // render
+            { loc: [43, 48] }, // resetButton
+            { loc: [49, 60] }, // list
+            { loc: [60, 80] }, // return App
+
           ]} />
 
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
@@ -304,6 +331,10 @@ export default class Presentation extends React.Component {
               </Quote>
             <Cite>Facebook</Cite>
           </BlockQuote>
+        </Slide>
+
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Heading size={6} textColor="tertiary" caps>Demo</Heading>
         </Slide>
       </Deck>
     );
