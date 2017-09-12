@@ -75,7 +75,7 @@ export default class Presentation extends React.Component {
             <div>
               <ol>
                 <li>User interface --> generic, not necessarely web based, see Native Mobile Apps</li>
-                <li>Only the view in the Model View Controller. More flexibility about the architecture but more responsability.</li>
+                <li>Only the view in the Model View Controller. More flexibility about the architecture but more responsability compare to a Framework.</li>
               </ol>
             </div>
           }
@@ -126,7 +126,7 @@ export default class Presentation extends React.Component {
             <Appear><ListItem>Component-Based</ListItem></Appear>
             <Appear><ListItem>Learn Once, Write anywhere</ListItem></Appear>
             <Appear><ListItem>Events behave in a consistent, standards-compliant way in all browsers</ListItem></Appear>
-            <Appear><ListItem>Deprecations =>  automatically migrate your code (reactjs/react-codemo)</ListItem></Appear>
+            <Appear><ListItem>Deprecations, migrations =>  automatically migrate your code (reactjs/react-codemo)</ListItem></Appear>
           </List>
         </Slide>
 
@@ -137,9 +137,9 @@ export default class Presentation extends React.Component {
           <div className="container">
 
             <List >
-              <ListItem className="clickable">Item - 1</ListItem>
-              <ListItem className="clickable">Item - 2</ListItem>
-              <ListItem className="clickable">Item - 3</ListItem>
+              <ListItem className="clickable">Task - 1</ListItem>
+              <ListItem className="clickable">Task - 2</ListItem>
+              <ListItem className="clickable">Task - 3</ListItem>
             </List>
             <span className="counter">Count clicks: 0</span>
             <div>
@@ -162,7 +162,6 @@ export default class Presentation extends React.Component {
           code={require("raw-loader!../assets/html")}
           ranges={[
             { loc: [0, 15], title: "Html" },
-            { loc: [0, 15] },
           ]} />
 
         <CodeSlide
@@ -194,6 +193,7 @@ export default class Presentation extends React.Component {
           maxWidth={1000}
           maxHeight={1300}
           transition={["fade"]}
+          className="html"
           lang="html"
           showLineNumbers={false}
           code={require("raw-loader!../assets/html")}
@@ -264,6 +264,19 @@ export default class Presentation extends React.Component {
           <Heading size={10} lineHeight={1} textColor="primary" >
             by Andreas Dimakis
           </Heading>
+        </Slide>
+
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary" className="inline">
+          <Heading size={6} textColor="primary">Usefull links</Heading>
+          <List >
+            <ListItem><Markdown>[Migrate from deprecations](https://github.com/reactjs/react-codemod)</Markdown></ListItem>
+            <ListItem ><Markdown textColor="primary">This [presentation](https://github.com/axsignalocean/react-intro)  in React</Markdown></ListItem>
+            <ListItem><Markdown>[Source code](https://webpack.github.io/) of the Demo</Markdown></ListItem>
+            <ListItem><Markdown>[create-react-app](https://github.com/facebookincubator/create-react-app)</Markdown></ListItem>
+            <ListItem><Markdown>[Webpack](https://webpack.github.io/)</Markdown></ListItem>
+            <ListItem><Markdown>[Babel](https://babeljs.io/)</Markdown></ListItem>
+            <ListItem><Markdown>[Jest](https://facebook.github.io/jest/)</Markdown></ListItem>
+          </List>
         </Slide>
       </Deck>
     );

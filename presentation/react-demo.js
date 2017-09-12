@@ -58,7 +58,7 @@ class App extends React.Component {
                 isDone={isDone}
                 onClick={this.handleLiClick(index)}
               >
-                Item - {index + 1}
+                Task - {index + 1}
               </Li>
             )
           )
