@@ -102,7 +102,11 @@ export default class Presentation extends React.Component {
               <h4>Present integration of React in an existing HTML page.</h4>
               <ol>
                 <li>Easy to integrate</li>
-                <li>Show an example of stateless react component</li>
+                <li>Mention stateless component => pure JS function, takes as input an object and returns JSX.
+                   JSX is syntax extension to JavaScript, it compiles to a JavaScript object.
+                   Mention children.
+
+                </li>
                 <li>ReactDOM.render => At the root of your tree you still have to write some plumbing code to connect the outer world into React.</li>
               </ol>
             </div>
@@ -227,8 +231,7 @@ export default class Presentation extends React.Component {
             <div>
               <h4>React code.</h4>
               <ol>
-                <li>Mention stateless component => pure JS function</li>
-                <li>Mention statefull => here extends ES6 class</li>
+                <li>Mention statefull => here extends ES6 class. State should be managed by higher-level “container” components, or via Flux/Redux/etc</li>
                 <li>key to match children in the original tree with children in the subsequent tree.</li>
               </ol>
             </div>
@@ -257,6 +260,14 @@ export default class Presentation extends React.Component {
           ]} />
 
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          notes={
+            <div>
+              <ol>
+                <li>Combination the Facebook BSD+Patents license  </li>
+                <li>I you sue Facebook for patent infringement your company cannot use React.</li>
+              </ol>
+            </div>
+          }
           <BlockQuote>
             <Quote textSize={35}>
               The license granted hereunder will terminate, automatically and without notice,
@@ -285,6 +296,8 @@ export default class Presentation extends React.Component {
             <ListItem><Markdown>[Webpack](https://webpack.github.io/)</Markdown></ListItem>
             <ListItem><Markdown>[Babel](https://babeljs.io/)</Markdown></ListItem>
             <ListItem><Markdown>[Jest](https://facebook.github.io/jest/)</Markdown></ListItem>
+            <ListItem><Markdown>[preactjs](https://preactjs.com/)</Markdown></ListItem>
+            <ListItem><Markdown>[React license FAQ](https://code.facebook.com/pages/850928938376556)</Markdown></ListItem>
           </List>
         </Slide>
       </Deck>
