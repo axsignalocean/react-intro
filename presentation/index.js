@@ -74,8 +74,17 @@ export default class Presentation extends React.Component {
           notes={
             <div>
               <ol>
-                <li>User interface --> generic, not necessarely web based, see Native Mobile Apps</li>
-                <li>Only the view in the Model View Controller. More flexibility about the architecture but more responsability compare to a Framework.</li>
+                <li>User interface --> generic, not necessarely web based, see Native Mobile Apps
+                <ol>
+                    <li>React canvas</li>
+                    <li>React Native</li>
+                    <li>React Native for Web</li>
+                  </ol>
+                </li>
+                <li>
+                  Only the view in the Model View Controller.
+                  More flexibility about the architecture but more responsability compare to a Framework. Since it is small, it is easier to learn than a Framework.
+                </li>
               </ol>
             </div>
           }
@@ -114,7 +123,7 @@ export default class Presentation extends React.Component {
             <h4>Slide notes</h4>
             <ol>
               <li>Virtual DOM compare in memory the DOM</li>
-              <li>Component-Based --> compose them to make complex UIs. Components let you split the UI into independent, reusable pieces, and think about each piece in isolation -> compose them to make complex UIs. Easy to add to an existing project</li>
+              <li>Component-Based --> compose them to make complex UIs. Components let you split the UI into independent, reusable pieces, and think about each piece in isolation -> compose them to make complex UIs.</li>
               <li>Learn Once, Write anywhere -> Server rendering (SEO), React Native, Render to canvas instead of HTML</li>
               <li>Events behave in a consistent, standards-compliant way in all browsers (including IE8) and automatically use event delegation.</li>
             </ol>
@@ -126,7 +135,7 @@ export default class Presentation extends React.Component {
             <Appear><ListItem>Component-Based</ListItem></Appear>
             <Appear><ListItem>Learn Once, Write anywhere</ListItem></Appear>
             <Appear><ListItem>Events behave in a consistent, standards-compliant way in all browsers</ListItem></Appear>
-            <Appear><ListItem>Deprecations, migrations =>  automatically migrate your code (reactjs/react-codemo)</ListItem></Appear>
+            <Appear><ListItem>Deprecations =>  automatically migrate your code (reactjs/react-codemo)</ListItem></Appear>
           </List>
         </Slide>
 
