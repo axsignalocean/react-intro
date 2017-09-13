@@ -20,7 +20,7 @@ const Counter = ({ value, onClick }) => (
 
 const INITIAL_STATE = {
   counter: 0,
-  items: [false, false, false]
+  tasks: [false, false, false]
 }
 
 class App extends React.Component {
@@ -32,7 +32,7 @@ class App extends React.Component {
   handleLiClick = (index) => (e) => {
     this.setState((prevState, props) => ({
       counter: prevState.counter + 1,
-      items: prevState.items.map((isDone, i) => index === i ? !isDone : isDone)
+      tasks: prevState.tasks.map((isDone, i) => index === i ? !isDone : isDone)
     }))
   }
 
@@ -49,7 +49,7 @@ class App extends React.Component {
 
     const list = (
       <ul>{
-          this.state.items.map((isDone, index) => 
+          this.state.tasks.map((isDone, index) => 
             (<Li key={index} isDone={isDone} 
               onClick={this.handleLiClick(index)}>
               Item - {index + 1}

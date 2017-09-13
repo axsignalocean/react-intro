@@ -35,6 +35,7 @@ require("spectacle/lib/themes/default/index.css");
 
 const images = {
   react: require("../assets/react.png"),
+  reactNative: require("../assets/react-native.png"),
 };
 
 preloader(images);
@@ -74,17 +75,16 @@ export default class Presentation extends React.Component {
           notes={
             <div>
               <ol>
-                <li>User interface --> generic, not necessarely web based, see Native Mobile Apps
-                <ol>
+                <li>User interface --> generic, not necessarely DOM based, see:
+              <ol>
                     <li>React canvas</li>
                     <li>React Native</li>
                     <li>React Native for Web</li>
                   </ol>
                 </li>
                 <li>
-                  Only the view in the Model View Controller.
-                  More flexibility about the architecture but more responsability compare to a Framework. Since it is small, it is easier to learn than a Framework.
-                </li>
+                  Only the view in the Model View Controller. More flexibility about the architecture but more responsability compare to a Framework.
+              </li>
               </ol>
             </div>
           }
@@ -94,6 +94,22 @@ export default class Presentation extends React.Component {
             <Appear><ListItem>A JavaScript library for building user interfaces</ListItem></Appear>
             <Appear><ListItem><span style={{ fontWeight: "bold" }}>V</span>iew in the M<span style={{ fontWeight: "bold" }}>V</span>C</ListItem></Appear>
           </List>
+        </Slide>
+
+        <Slide transition={["fade"]} bgColor="primary"
+          notes={
+            <div>
+              <ol>
+                <li>The rectangle contains a React component using React Native syntax that describes how the UI is structured.
+                   This will render  differently depending on the environment. 
+                   If you are using React Native, it can compile into native Android or iOs.
+                   If you are using "React Native for Web" library, in your browser, it will render as HTML.
+                </li>
+              </ol>
+            </div>
+          }
+        >
+          <Image src={images.reactNative} width="100%" />
         </Slide>
 
         <CodeSlide
@@ -113,6 +129,7 @@ export default class Presentation extends React.Component {
           }
           transition={["fade"]}
           lang="js"
+          showLineNumbers={false}
           code={require("raw-loader!../assets/code.test")}
           ranges={[
             { loc: [0, 1], title: "How to integrate?" },
@@ -197,10 +214,19 @@ export default class Presentation extends React.Component {
             { loc: [33, 45] }, // switchTextDecoration
           ]} />
 
+        <Slide transition={["fade"]} bgColor="primary" >
+          <Heading size={6} lineHeight={1} textColor="tertiary" >
+            React
+          </Heading>
+          <div id="react">
+            <App />
+          </div>
+        </Slide>
+
         <CodeSlide
           notes={
             <div>
-              <h4>Components</h4>
+              <h4>Create Components</h4>
             </div>
           }
           maxWidth={1000}
@@ -216,15 +242,6 @@ export default class Presentation extends React.Component {
             { loc: [2, 3], note: "=> Li component" },
             { loc: [6, 9], note: "=> Counter component" },
           ]} />
-
-        <Slide transition={["fade"]} bgColor="primary" >
-          <Heading size={6} lineHeight={1} textColor="tertiary" >
-            React
-          </Heading>
-          <div id="react">
-            <App />
-          </div>
-        </Slide>
 
         <CodeSlide
           notes={
@@ -259,15 +276,15 @@ export default class Presentation extends React.Component {
 
           ]} />
 
-        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+        <Slide transition={["fade"]} bgColor="secondary" textColor="primary"
           notes={
             <div>
               <ol>
                 <li>Combination the Facebook BSD+Patents license  </li>
-                <li>I you sue Facebook for patent infringement your company cannot use React.</li>
+                <li>If you sue Facebook for patent infringement, your company loose the right to use React.</li>
               </ol>
             </div>
-          }
+          }>
           <BlockQuote>
             <Quote textSize={35}>
               The license granted hereunder will terminate, automatically and without notice,
@@ -289,16 +306,21 @@ export default class Presentation extends React.Component {
         <Slide transition={["fade"]} bgColor="secondary" textColor="primary" className="inline">
           <Heading size={6} textColor="primary">Usefull links</Heading>
           <List >
-            <ListItem><Markdown>[Migrate from deprecations](https://github.com/reactjs/react-codemod)</Markdown></ListItem>
+            <ListItem ><Markdown textColor="primary">{`http://react-athens.surge.sh`}</Markdown></ListItem>
             <ListItem ><Markdown textColor="primary">This [presentation](https://github.com/axsignalocean/react-intro)  in React</Markdown></ListItem>
             <ListItem><Markdown>[Source code](https://webpack.github.io/) of the Demo</Markdown></ListItem>
+            <ListItem><Markdown>[Migrate from deprecations](https://github.com/reactjs/react-codemod)</Markdown></ListItem>
             <ListItem><Markdown>[create-react-app](https://github.com/facebookincubator/create-react-app)</Markdown></ListItem>
             <ListItem><Markdown>[Webpack](https://webpack.github.io/)</Markdown></ListItem>
             <ListItem><Markdown>[Babel](https://babeljs.io/)</Markdown></ListItem>
             <ListItem><Markdown>[Jest](https://facebook.github.io/jest/)</Markdown></ListItem>
-            <ListItem><Markdown>[preactjs](https://preactjs.com/)</Markdown></ListItem>
+            <ListItem><Markdown>[PreactJs](https://preactjs.com/)</Markdown></ListItem>
             <ListItem><Markdown>[React license FAQ](https://code.facebook.com/pages/850928938376556)</Markdown></ListItem>
           </List>
+        </Slide>
+
+        <Slide transition={["fade"]} bgColor="secondary" textColor="white">
+          <Heading size={6} textColor="white">Questions?</Heading>
         </Slide>
       </Deck>
     );
